@@ -1,1 +1,12 @@
-<p>catalogo-servicios works!</p>
+<!-- src/app/catalogo-servicios/catalogo-servicios.component.html -->
+<div class="catalogo">
+    <h2>Catálogo de Servicios UPAV</h2>
+    <div class="servicios-container">
+        <div *ngFor="let servicio of servicios" class="servicio-card">
+            <img [src]="servicio.imagen" [alt]="servicio.nombre" class="servicio-imagen">
+            <h3>{{ servicio.nombre }}</h3>
+            <p>{{ servicio.descripcion }}</p>
+            <p><strong>Precio:</strong> {{ servicio.precio }}</p>
+        </div>
+    </div>
+</div>
