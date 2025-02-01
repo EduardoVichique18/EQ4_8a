@@ -24,7 +24,8 @@ import { CatalogoServiciosModule } from './catalogo-servicios/catalogo-servicios
     AppRoutingModule,
     CommonModule,
     NgbModule,
-    CatalogoServiciosModule
+    CatalogoServiciosModule,
+    FormsModule 
   ],
   providers: [
     provideClientHydration(withEventReplay())

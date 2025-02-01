@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CatalogoServiciosComponent } from './catalogo-servicios/catalogo-servicios.component';
 import { CatalogoUsuariosComponent } from './catalogo-usuarios/catalogo-usuarios.component';
+import { RegistroComponent } from './registro/registro.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,10 @@ const routes: Routes = [
   },
   {path:'catalogo-usuarios',
     component:CatalogoUsuariosComponent
+  },
+  {
+    path: 'registro',
+    component:RegistroComponent
   }
 ];
 
