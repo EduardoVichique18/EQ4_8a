@@ -9,6 +9,7 @@ import { CatalogoUsuariosComponent } from './catalogo-usuarios/catalogo-usuarios
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { CatalogoServiciosModule } from './catalogo-servicios/catalogo-servicios.module';
 
 @NgModule({
@@ -25,7 +26,8 @@ import { CatalogoServiciosModule } from './catalogo-servicios/catalogo-servicios
     CommonModule,
     NgbModule,
     CatalogoServiciosModule,
-    FormsModule 
+    FormsModule,
+    HttpClientModule
   ],
   providers: [
     provideClientHydration(withEventReplay())

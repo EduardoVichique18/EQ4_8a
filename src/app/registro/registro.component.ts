@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { RegistroService } from '../registro-service.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-registro',
@@ -8,6 +10,7 @@ import { Component } from '@angular/core';
 })
 export class RegistroComponent {
   showPassword: boolean = false; // Para mostrar/ocultar la contraseña
+  constructor(private registroService: RegistroService) {}
 
   // Función para alternar la visibilidad de la contraseña
   togglePasswordVisibility(): void {
@@ -22,11 +25,18 @@ export class RegistroComponent {
   }
 
   // Función para manejar el envío del formulario
-  onSubmit(form: any): void {
+  onSubmit(form: NgForm) {
     if (form.valid) {
-      console.log('Formulario enviado:', form.value);
-    } else {
-      console.log('Formulario no válido');
+      this.registroService.registrarUsuario(form.value).subscribe(
+        response => {
+          alert('Usuario registrado exitosamente');
+          form.reset();
+        },
+        error => {
+          console.error('Error en el registro:', error);
+          alert('Ocurrió un error al registrar el usuario.');
+        }
+      );
     }
   }
 }
