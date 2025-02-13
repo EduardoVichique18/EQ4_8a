@@ -1,0 +1,74 @@
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Contenedor principal */
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  /* HEADER */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #00478f; /* Azul Marino */
+    padding: 1px 30px;
+    color: white;
+  }
+  
+  /* Logo */
+  .logo img {
+    height: 70px;
+  }
+  
+  /* NAV */
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+  
+  nav ul li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background 0.3s;
+    display: block;
+    max-width: 120px; /* Ajustar ancho para evitar que sea demasiado largo */
+    word-wrap: break-word; /* Para dividir el texto en varias líneas */
+  }
+  
+  /* Centrar títulos largos */
+  nav ul li a {
+    text-align: center;
+  }
+  
+  /* Efecto hover */
+  nav ul li a:hover {
+    background: #0678e3; /* Azul más claro */
+  }
+  
+  /* FOOTER */
+  footer {
+    text-align: center;
+    background-color: #00478f;
+    color: white;
+    padding: 10px 0;
+    margin-top: auto; /* Hace que el footer se posicione debajo del contenido */
+  }
+  

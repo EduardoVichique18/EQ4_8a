@@ -11,13 +11,21 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CatalogoServiciosModule } from './catalogo-servicios/catalogo-servicios.module';
+import { ConocenosComponent } from './conocenos/conocenos.component';
+import { ContactoComponent } from './contacto/contacto.component';
+import { InicioComponent } from './inicio/inicio.component';
+import { OfertaEducativaComponent } from './oferta-educativa/oferta-educativa.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegistroComponent,
-    CatalogoUsuariosComponent
+    CatalogoUsuariosComponent,
+    ConocenosComponent,
+    ContactoComponent,
+    InicioComponent,
+    OfertaEducativaComponent
 
   ],
   imports: [
