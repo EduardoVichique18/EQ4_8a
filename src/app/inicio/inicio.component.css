@@ -44,9 +44,16 @@
         }
   
         .donate {
-          background: orange;
-          color: white;
+          background-color: #ffbb00; /* Color de fondo */
+          color: white; /* Color del texto */
+          padding: 15px 30px; /* Espaciado interno */
+          border: none; /* Sin borde */
+          border-radius: 5px; /* Bordes redondeados */
+          text-decoration: none; /* Sin subrayado */
+          font-size: 1.2rem; /* Tamaño de fuente */
+          transition: background-color 0.3s, transform 0.3s; /* Transiciones suaves */
         }
+        
   
         .discover {
           background: white;

@@ -8,14 +8,18 @@
         <th>Apellido Paterno</th>
         <th>Apellido Materno</th>
         <th>Correo Electrónico</th>
+        <th>Acciones</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let usuario of usuarios">
         <td>{{ usuario.nombre }}</td>
-        <td>{{ usuario.apellidoPaterno }}</td>
-        <td>{{ usuario.apellidoMaterno }}</td>
-        <td><i class="fas fa-envelope"></i> {{ usuario.gmail }}</td>
+        <td>{{ usuario.apellido_paterno }}</td>
+        <td>{{ usuario.apellido_materno }}</td>
+        <td>{{ usuario.correo }}</td>
+        <td>
+          <button class="btn-eliminar" (click)="eliminarUsuario(usuario.id)">Eliminar</button>
+        </td>
       </tr>
     </tbody>
   </table>
