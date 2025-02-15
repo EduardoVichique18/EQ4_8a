@@ -70,7 +70,32 @@ button:disabled {
 }
 
 .error {
-    color: red;
+    color: rgb(0, 85, 255);
     font-size: 0.8rem;
     margin-top: -10px;
 }
+
+.message.success {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border: 1px solid #d6e9c6;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: center;
+  }
+  
+  .message.error {
+    color: #4282a9;
+    background-color: #f2dede;
+    border: 1px solid #fefefe;
+    padding: 10px;
+    border-radius: 4px;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  

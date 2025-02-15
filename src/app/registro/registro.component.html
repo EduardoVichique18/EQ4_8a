@@ -1,57 +1,90 @@
 <div class="register-container">
     <h2>Registro de Alumnos</h2>
     <form #registroForm="ngForm" (ngSubmit)="onSubmit(registroForm)">
+      
+      <!-- Sección: Datos Personales -->
+      <fieldset>
+        <legend>Datos Personales</legend>
         <div class="form-row">
-            <input type="text" id="apellidoPaterno" name="apellidoPaterno" placeholder="Apellido Paterno" ngModel required>
-            <input type="text" id="apellidoMaterno" name="apellidoMaterno" placeholder="Apellido Materno" ngModel required>
+          <input type="text" id="apellidoPaterno" name="apellidoPaterno" placeholder="Apellido Paterno" ngModel required>
+          <input type="text" id="apellidoMaterno" name="apellidoMaterno" placeholder="Apellido Materno" ngModel required>
         </div>
         
         <div class="form-row">
-            <input type="text" id="nombre" name="nombre" placeholder="Nombre" ngModel required>
-            <input type="email" id="correo" name="correo" placeholder="Correo Electrónico" ngModel required>
+          <input type="text" id="nombre" name="nombre" placeholder="Nombre" ngModel required>
+          <input type="email" id="correo" name="correo" placeholder="Correo Electrónico" ngModel required>
         </div>
-
+    
         <div class="form-row">
-            <input type="password" id="contraseña" name="contraseña" placeholder="Contraseña" ngModel required>
-            <input type="password" id="confirmarContraseña" name="confirmarContraseña" placeholder="Confirmar Contraseña" ngModel required>
+          <input type="date" id="fechaNacimiento" name="fechaNacimiento" ngModel required>
+          <select id="sexo" name="sexo" ngModel required>
+            <option value="" disabled selected>Sexo</option>
+            <option value="masculino">Masculino</option>
+            <option value="femenino">Femenino</option>
+            <option value="otro">Otro</option>
+          </select>
         </div>
-
+      </fieldset>
+    
+      <!-- Sección: Datos de Ubicación -->
+      <fieldset>
+        <legend>Datos de Ubicación</legend>
         <div class="form-row">
-            <input type="date" id="fechaNacimiento" name="fechaNacimiento" ngModel required>
-            <select id="sexo" name="sexo" ngModel required>
-                <option value="" disabled selected>Sexo</option>
-                <option value="masculino">Masculino</option>
-                <option value="femenino">Femenino</option>
-                <option value="otro">Otro</option>
-            </select>
+          <input type="text" id="lugarNacimiento" name="lugarNacimiento" placeholder="Lugar de Nacimiento" ngModel required>
+          <input type="text" id="escuela" name="escuela" placeholder="Escuela de Bachillerato" ngModel required>
         </div>
-
+        
         <div class="form-row">
-            <input type="text" id="lugarNacimiento" name="lugarNacimiento" placeholder="Lugar de Nacimiento" ngModel required>
-            <input type="text" id="escuela" name="escuela" placeholder="Escuela de Bachillerato" ngModel required>
+          <input type="text" id="codigoPostal" name="codigoPostal" placeholder="Código Postal" ngModel required>
+          <input type="text" id="colonia" name="colonia" placeholder="Colonia" ngModel required>
         </div>
-
+        
         <div class="form-row">
-            <input type="text" id="codigoPostal" name="codigoPostal" placeholder="Código Postal" ngModel required>
-            <input type="text" id="colonia" name="colonia" placeholder="Colonia" ngModel required>
+          <input type="text" id="calle" name="calle" placeholder="Calle" ngModel required>
+          <input type="tel" id="telefono" name="telefono" placeholder="Teléfono Celular" ngModel required>
         </div>
-
+      </fieldset>
+    
+      <!-- Sección: Datos Académicos -->
+      <fieldset>
+        <legend>Datos Académicos</legend>
         <div class="form-row">
-            <input type="text" id="calle" name="calle" placeholder="Calle" ngModel required>
-            <input type="tel" id="telefono" name="telefono" placeholder="Teléfono Celular" ngModel required>
+          <select id="carrera" name="carrera" ngModel required>
+            <option value="" disabled selected>Seleccionar Carrera</option>
+            <option value="ingenieria">Ingeniería</option>
+            <option value="medicina">Medicina</option>
+            <option value="derecho">Derecho</option>
+            <option value="psicologia">Psicología</option>
+          </select>
         </div>
-
+      </fieldset>
+    
+      <!-- Sección: Datos de Acceso -->
+      <fieldset>
+        <legend>Datos de Acceso</legend>
         <div class="form-row">
-            <select id="carrera" name="carrera" ngModel required>
-                <option value="" disabled selected>Seleccionar Carrera</option>
-                <option value="ingenieria">Ingeniería</option>
-                <option value="medicina">Medicina</option>
-                <option value="derecho">Derecho</option>
-                <option value="psicologia">Psicología</option>
-            </select>
+          <input type="password" id="contraseña" name="contraseña" placeholder="Contraseña" ngModel required>
+          <input type="password" id="confirmarContraseña" name="confirmarContraseña" placeholder="Confirmar Contraseña" ngModel required>
         </div>
-
-        <button type="submit" [disabled]="!registroForm.valid">Registrar</button>
+    
+        <!-- Botón para alternar la visibilidad de la contraseña -->
+        <div class="form-row">
+          <button type="button" (click)="togglePasswordVisibility()">Mostrar/Ocultar Contraseña</button>
+        </div>
+      </fieldset>
+    
+      <!-- Mensaje de error (si existe) -->
+      <div *ngIf="errorMessage" class="message error">
+        {{ errorMessage }}
+      </div>
+    
+      <!-- Mensaje de éxito (si existe) -->
+      <div *ngIf="successMessage" class="message success">
+        {{ successMessage }}
+      </div>
+        
+      <!-- Botón de Envío -->
+      <button type="submit" [disabled]="!registroForm.valid">Registrar</button>
     </form>
-</div>
-
+  </div>
+  
