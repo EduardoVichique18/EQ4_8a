@@ -33,6 +33,7 @@ import { OfertaEducativaComponent } from './oferta-educativa/oferta-educativa.co
     AppRoutingModule,
     CommonModule,
     NgbModule,
+    NgbModule,
     CatalogoServiciosModule,
     FormsModule,
     HttpClientModule
