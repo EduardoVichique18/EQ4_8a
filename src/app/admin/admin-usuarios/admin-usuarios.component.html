@@ -1,0 +1,65 @@
+<!-- admin-usuarios.component.html -->
+<div class="usuarios-container">
+    <h3>Catálogo de Usuarios (Admin)</h3>
+    
+    <!-- Formulario para agregar/editar usuarios -->
+    <div class="form-container">
+      <h4>{{ modoEdicion ? 'Editar Usuario' : 'Agregar Nuevo Usuario' }}</h4>
+      <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" [(ngModel)]="nuevoUsuario.nombre" required>
+      </div>
+      <div class="form-group">
+        <label for="apellidoPaterno">Apellido Paterno:</label>
+        <input type="text" id="apellidoPaterno" [(ngModel)]="nuevoUsuario.apellidoPaterno" required>
+      </div>
+      <div class="form-group">
+        <label for="apellidoMaterno">Apellido Materno:</label>
+        <input type="text" id="apellidoMaterno" [(ngModel)]="nuevoUsuario.apellidoMaterno" required>
+      </div>
+      <div class="form-group">
+        <label for="correo">Correo Electrónico:</label>
+        <input type="email" id="correo" [(ngModel)]="nuevoUsuario.correo" required>
+      </div>
+      <div class="form-group">
+        <label for="edad">Edad:</label>
+        <input type="number" id="edad" [(ngModel)]="nuevoUsuario.edad" required min="1">
+      </div>
+      <div class="form-actions">
+        <button *ngIf="!modoEdicion" (click)="agregarUsuario()" class="btn-primary">Agregar Usuario</button>
+        <button *ngIf="modoEdicion" (click)="actualizarUsuario()" class="btn-primary">Guardar Cambios</button>
+        <button *ngIf="modoEdicion" (click)="cancelarEdicion()" class="btn-secondary">Cancelar</button>
+      </div>
+    </div>
+    
+    <!-- Tabla de usuarios -->
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Apellido Paterno</th>
+            <th>Apellido Materno</th>
+            <th>Correo</th>
+            <th>Edad</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let usuario of usuarios">
+            <td>{{ usuario.id }}</td>
+            <td>{{ usuario.nombre }}</td>
+            <td>{{ usuario.apellidoPaterno }}</td>
+            <td>{{ usuario.apellidoMaterno }}</td>
+            <td>{{ usuario.correo }}</td>
+            <td>{{ usuario.edad }}</td>
+            <td>
+              <button (click)="editarUsuario(usuario)" class="btn-edit">Editar</button>
+              <button (click)="eliminarUsuario(usuario.id)" class="btn-delete">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

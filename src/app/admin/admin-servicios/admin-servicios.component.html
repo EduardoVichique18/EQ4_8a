@@ -1,0 +1,83 @@
+<div class="servicios-container">
+  <h3>Catálogo de Servicios (Admin)</h3>
+  
+  <!-- Mensajes de error -->
+  <div *ngIf="error" class="error-message">
+    {{ error }}
+    <button (click)="error = ''" class="btn-close">×</button>
+  </div>
+  
+  <!-- Formulario para agregar/editar servicios -->
+  <div class="form-container">
+    <h4>{{ modoEdicion ? 'Editar Servicio' : 'Agregar Nuevo Servicio' }}</h4>
+    <div class="form-group">
+      <label for="nombre">Nombre del Servicio:</label>
+      <input type="text" id="nombre" [(ngModel)]="nuevoServicio.nombre" required>
+    </div>
+    <div class="form-group">
+      <label for="descripcion">Descripción:</label>
+      <textarea id="descripcion" [(ngModel)]="nuevoServicio.descripcion" required></textarea>
+    </div>
+    <div class="form-group">
+      <label for="categoria">Categoría:</label>
+      <select id="categoria" [(ngModel)]="nuevoServicio.categoria" required>
+        <option value="">Seleccionar categoría</option>
+        <option value="Biblioteca">Biblioteca</option>
+        <option value="Equipos">Equipos</option>
+        <option value="Académico">Académico</option>
+        <option value="Administrativo">Administrativo</option>
+      </select>
+    </div>
+    <div class="form-group checkbox">
+      <label>
+        <input type="checkbox" [(ngModel)]="nuevoServicio.disponible">
+        Disponible
+      </label>
+    </div>
+    <div class="form-actions">
+      <button *ngIf="!modoEdicion" (click)="agregarServicio()" class="btn-primary" [disabled]="cargando">
+        {{ cargando ? 'Agregando...' : 'Agregar Servicio' }}
+      </button>
+      <button *ngIf="modoEdicion" (click)="actualizarServicio()" class="btn-primary" [disabled]="cargando">
+        {{ cargando ? 'Guardando...' : 'Guardar Cambios' }}
+      </button>
+      <button *ngIf="modoEdicion" (click)="cancelarEdicion()" class="btn-secondary" [disabled]="cargando">Cancelar</button>
+    </div>
+  </div>
+  
+  <!-- Tabla de servicios -->
+  <div class="table-container">
+    <div *ngIf="cargando && servicios.length === 0" class="loading-message">
+      Cargando servicios...
+    </div>
+    
+    <table *ngIf="!cargando || servicios.length > 0">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Categoría</th>
+          <th>Disponible</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let servicio of servicios">
+          <td>{{ servicio.id }}</td>
+          <td>{{ servicio.nombre }}</td>
+          <td>{{ servicio.descripcion }}</td>
+          <td>{{ servicio.categoria }}</td>
+          <td>{{ servicio.disponible ? 'Sí' : 'No' }}</td>
+          <td>
+            <button (click)="editarServicio(servicio)" class="btn-edit" [disabled]="cargando">Editar</button>
+            <button (click)="eliminarServicio(servicio.id!)" class="btn-delete" [disabled]="cargando">Eliminar</button>
+          </td>
+        </tr>
+        <tr *ngIf="servicios.length === 0 && !cargando">
+          <td colspan="6" class="no-data">No hay servicios disponibles</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

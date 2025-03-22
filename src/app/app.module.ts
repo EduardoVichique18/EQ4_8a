@@ -15,6 +15,9 @@ import { ConocenosComponent } from './conocenos/conocenos.component';
 import { ContactoComponent } from './contacto/contacto.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { OfertaEducativaComponent } from './oferta-educativa/oferta-educativa.component';
+import { AdminComponent } from './admin/admin.component';
+import { AdminUsuariosComponent } from './admin/admin-usuarios/admin-usuarios.component';
+import { AdminServiciosComponent } from './admin/admin-servicios/admin-servicios.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import { OfertaEducativaComponent } from './oferta-educativa/oferta-educativa.co
     ConocenosComponent,
     ContactoComponent,
     InicioComponent,
-    OfertaEducativaComponent
+    OfertaEducativaComponent,
+    AdminComponent,
+    AdminUsuariosComponent,
+    AdminServiciosComponent
 
   ],
   imports: [

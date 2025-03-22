@@ -1,0 +1,27 @@
+<!-- admin.component.html -->
+<div class="admin-container">
+    <div class="admin-header">
+      <h2>Panel de Administración</h2>
+      <button class="logout-button" (click)="cerrarSesion()">Cerrar Sesión</button>
+    </div>
+    
+    <div class="admin-navigation">
+      <button [class.active]="currentView === 'dashboard'" (click)="changeView('dashboard')">Dashboard</button>
+      <button [class.active]="currentView === 'usuarios'" (click)="changeView('usuarios')">Catálogo de Usuarios</button>
+      <button [class.active]="currentView === 'servicios'" (click)="changeView('servicios')">Catálogo de Servicios</button>
+    </div>
+    
+    <div class="admin-content">
+      <!-- Dashboard View -->
+      <div *ngIf="currentView === 'dashboard'">
+        <h3>Bienvenido al Panel de Administración</h3>
+        <p>Selecciona una opción del menú para gestionar los catálogos.</p>
+      </div>
+      
+      <!-- Usuarios Catalog View -->
+      <app-admin-usuarios *ngIf="currentView === 'usuarios'"></app-admin-usuarios>
+      
+      <!-- Servicios Catalog View -->
+      <app-admin-servicios *ngIf="currentView === 'servicios'"></app-admin-servicios>
+    </div>
+  </div>

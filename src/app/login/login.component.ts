@@ -1,24 +1,25 @@
 import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   standalone: false,
-
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  credenciales = {
-    email: '',
-    password: ''
-  };
+  username: string = '';
+  password: string = '';
 
-  onSubmit() {
-    if (this.credenciales.email && this.credenciales.password) {
-      console.log('Credenciales enviadas:', this.credenciales);
+  constructor(private router: Router) {}
+
+  login() {
+    // Aquí puedes agregar la lógica para validar las credenciales
+    if (this.username === 'admin' && this.password === 'admin123') {
+      // Redirigir al panel de administración
+      this.router.navigate(['/admin']);
     } else {
-      console.log('Formulario no válido');
+      alert('Credenciales inválidas');
     }
   }
 }

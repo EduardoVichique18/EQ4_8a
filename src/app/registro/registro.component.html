@@ -1,90 +1,190 @@
 <div class="register-container">
-    <h2>Registro de Alumnos</h2>
-    <form #registroForm="ngForm" (ngSubmit)="onSubmit(registroForm)">
-      
-      <!-- Sección: Datos Personales -->
-      <fieldset>
-        <legend>Datos Personales</legend>
-        <div class="form-row">
-          <input type="text" id="apellidoPaterno" name="apellidoPaterno" placeholder="Apellido Paterno" ngModel required>
-          <input type="text" id="apellidoMaterno" name="apellidoMaterno" placeholder="Apellido Materno" ngModel required>
-        </div>
-        
-        <div class="form-row">
-          <input type="text" id="nombre" name="nombre" placeholder="Nombre" ngModel required>
-          <input type="email" id="correo" name="correo" placeholder="Correo Electrónico" ngModel required>
-        </div>
+  <h2>Registro de aspirantes</h2>
+  <form #registroForm="ngForm" (ngSubmit)="onSubmit(registroForm)">
     
-        <div class="form-row">
-          <input type="date" id="fechaNacimiento" name="fechaNacimiento" ngModel required>
-          <select id="sexo" name="sexo" ngModel required>
-            <option value="" disabled selected>Sexo</option>
+    <!-- Sección: Datos Personales -->
+    <fieldset>
+      <legend>Datos Personales</legend>
+      <div class="form-row">
+        <div class="form-floating">
+          <input type="text" id="apellidoPaterno" name="apellidoPaterno" class="form-control" ngModel required>
+          <label for="apellidoPaterno">Apellido Paterno</label>
+        </div>
+        <div class="form-floating">
+          <input type="text" id="apellidoMaterno" name="apellidoMaterno" class="form-control" ngModel required>
+          <label for="apellidoMaterno">Apellido Materno</label>
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-floating">
+          <input type="text" id="nombre" name="nombre" class="form-control" ngModel required>
+          <label for="nombre">Nombre(s)</label>
+        </div>
+        <div class="form-floating">
+          <input type="date" id="fechaNacimiento" name="fechaNacimiento" class="form-control" ngModel required>
+          <label for="fechaNacimiento">Fecha de Nacimiento</label>
+        </div>
+      </div>
+  
+      <div class="form-row">
+        <div class="form-floating">
+          <input type="text" id="lugarNacimiento" name="lugarNacimiento" class="form-control" ngModel required>
+          <label for="lugarNacimiento">Lugar de Nacimiento</label>
+        </div>
+        <div class="form-floating">
+          <select id="sexo" name="sexo" class="form-control" ngModel required>
+            <option value="" disabled selected></option>
             <option value="masculino">Masculino</option>
             <option value="femenino">Femenino</option>
             <option value="otro">Otro</option>
           </select>
+          <label for="sexo">Sexo</label>
         </div>
-      </fieldset>
-    
-      <!-- Sección: Datos de Ubicación -->
-      <fieldset>
-        <legend>Datos de Ubicación</legend>
-        <div class="form-row">
-          <input type="text" id="lugarNacimiento" name="lugarNacimiento" placeholder="Lugar de Nacimiento" ngModel required>
-          <input type="text" id="escuela" name="escuela" placeholder="Escuela de Bachillerato" ngModel required>
+      </div>
+
+      <div class="form-row">
+        <div class="form-floating">
+          <input type="text" id="escuela" name="escuela" class="form-control" ngModel required>
+          <label for="escuela">Escuela de la que proviene</label>
         </div>
-        
-        <div class="form-row">
-          <input type="text" id="codigoPostal" name="codigoPostal" placeholder="Código Postal" ngModel required>
-          <input type="text" id="colonia" name="colonia" placeholder="Colonia" ngModel required>
+        <div class="form-floating">
+          <input type="text" id="ocupacion" name="ocupacion" class="form-control" ngModel required>
+          <label for="ocupacion">Ocupación</label>
         </div>
-        
-        <div class="form-row">
-          <input type="text" id="calle" name="calle" placeholder="Calle" ngModel required>
-          <input type="tel" id="telefono" name="telefono" placeholder="Teléfono Celular" ngModel required>
-        </div>
-      </fieldset>
-    
-      <!-- Sección: Datos Académicos -->
-      <fieldset>
-        <legend>Datos Académicos</legend>
-        <div class="form-row">
-          <select id="carrera" name="carrera" ngModel required>
-            <option value="" disabled selected>Seleccionar Carrera</option>
-            <option value="ingenieria">Ingeniería</option>
-            <option value="medicina">Medicina</option>
-            <option value="derecho">Derecho</option>
-            <option value="psicologia">Psicología</option>
+      </div>
+
+      <div class="form-row">
+        <div class="form-floating">
+          <select id="estadoCivil" name="estadoCivil" class="form-control" ngModel required>
+            <option value="" disabled selected></option>
+            <option value="soltero">Soltero/a</option>
+            <option value="casado">Casado/a</option>
+            <option value="divorciado">Divorciado/a</option>
+            <option value="viudo">Viudo/a</option>
+            <option value="unionLibre">Unión Libre</option>
           </select>
+          <label for="estadoCivil">Estado Civil</label>
         </div>
-      </fieldset>
-    
-      <!-- Sección: Datos de Acceso -->
-      <fieldset>
-        <legend>Datos de Acceso</legend>
-        <div class="form-row">
-          <input type="password" id="contraseña" name="contraseña" placeholder="Contraseña" ngModel required>
-          <input type="password" id="confirmarContraseña" name="confirmarContraseña" placeholder="Confirmar Contraseña" ngModel required>
-        </div>
-    
-        <!-- Botón para alternar la visibilidad de la contraseña -->
-        <div class="form-row">
-          <button type="button" (click)="togglePasswordVisibility()">Mostrar/Ocultar Contraseña</button>
-        </div>
-      </fieldset>
-    
-      <!-- Mensaje de error (si existe) -->
-      <div *ngIf="errorMessage" class="message error">
-        {{ errorMessage }}
       </div>
-    
-      <!-- Mensaje de éxito (si existe) -->
-      <div *ngIf="successMessage" class="message success">
-        {{ successMessage }}
-      </div>
-        
-      <!-- Botón de Envío -->
-      <button type="submit" [disabled]="!registroForm.valid">Registrar</button>
-    </form>
-  </div>
+    </fieldset>
   
+    <!-- Sección: Datos de Ubicación -->
+    <fieldset>
+      <legend>Datos de Ubicación</legend>
+      <div class="form-row">
+        <div class="form-floating">
+          <input type="text" id="direccion" name="direccion" class="form-control" ngModel required>
+          <label for="direccion">Dirección</label>
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-floating">
+          <input 
+            type="text" 
+            id="codigoPostal" 
+            name="codigoPostal" 
+            class="form-control" 
+            ngModel 
+            required
+            pattern="[0-9]{5}"
+            maxlength="5"
+            (input)="validateNumericInput($event, 5)">
+          <label for="codigoPostal">Código Postal</label>
+        </div>
+        <div *ngIf="registroForm.controls['codigoPostal']?.errors?.['pattern']" class="error-message">
+          El código postal debe contener 5 dígitos numéricos
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-floating">
+          <input 
+            type="tel" 
+            id="telefono" 
+            name="telefono" 
+            class="form-control" 
+            ngModel 
+            required
+            pattern="[0-9]{10}"
+            maxlength="10"
+            (input)="validateNumericInput($event, 10)">
+          <label for="telefono">Teléfono Celular</label>
+        </div>
+        <div *ngIf="registroForm.controls['telefono']?.errors?.['pattern']" class="error-message">
+          El teléfono debe contener 10 dígitos numéricos
+        </div>
+      </div>
+    </fieldset>
+  
+    <!-- Sección: Datos de Acceso -->
+    <fieldset>
+      <legend>Datos de Acceso</legend>
+      <div class="form-row">
+        <div class="form-floating">
+          <input 
+            type="email" 
+            id="correo" 
+            name="correo" 
+            class="form-control" 
+            ngModel 
+            required
+            pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}">
+          <label for="correo">Correo Electrónico</label>
+        </div>
+        <div *ngIf="registroForm.controls['correo']?.errors?.['pattern']" class="error-message">
+          Correo electrónico inválido
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-floating">
+          <input 
+            [type]="showPassword ? 'text' : 'password'" 
+            id="password" 
+            name="password" 
+            class="form-control" 
+            ngModel 
+            required
+            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$">
+          <label for="password">Crea una Contraseña</label>
+        </div>
+        <div class="form-floating">
+          <input 
+            [type]="showPassword ? 'text' : 'password'" 
+            id="confirmPassword" 
+            name="confirmPassword" 
+            class="form-control" 
+            ngModel 
+            required>
+          <label for="confirmPassword">Confirmar Contraseña</label>
+        </div>
+      </div>
+      
+      <div *ngIf="registroForm.controls['password']?.errors?.['pattern']" class="error-message">
+        La contraseña debe tener al menos 8 caracteres, incluir mayúsculas, minúsculas, números y caracteres especiales
+      </div>
+
+      <!-- Botón para alternar la visibilidad de la contraseña -->
+      <div class="form-row">
+        <button type="button" (click)="togglePasswordVisibility()" class="password-toggle">
+          {{ showPassword ? 'Ocultar' : 'Ver' }} contraseña
+        </button>
+      </div>
+    </fieldset>
+  
+    <!-- Mensaje de error (si existe) -->
+    <div *ngIf="errorMessage" class="message error">
+      {{ errorMessage }}
+    </div>
+  
+    <!-- Mensaje de éxito (si existe) -->
+    <div *ngIf="successMessage" class="message success">
+      {{ successMessage }}
+    </div>
+      
+    <!-- Botón de Envío -->
+    <button type="submit" [disabled]="!registroForm.valid">Registrar</button>
+  </form>
+</div>

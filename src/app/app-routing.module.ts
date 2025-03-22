@@ -8,7 +8,7 @@ import { CatalogoServiciosComponent } from './catalogo-servicios/catalogo-servic
 import { CatalogoUsuariosComponent } from './catalogo-usuarios/catalogo-usuarios.component';
 import { RegistroComponent } from './registro/registro.component';
 import { LoginComponent } from './login/login.component';
-
+import { AdminComponent } from './admin/admin.component'; // Importa el componente de administración
 
 const routes: Routes = [
   {
@@ -24,8 +24,9 @@ const routes: Routes = [
     path: 'inicio',
     component: InicioComponent
   },
-  {path:'catalogo-usuarios',
-    component:CatalogoUsuariosComponent
+  {
+    path: 'catalogo-usuarios',
+    component: CatalogoUsuariosComponent
   },
   {
     path: 'conocenos',
@@ -45,12 +46,13 @@ const routes: Routes = [
   },
   {
     path: 'registro',
-    component:RegistroComponent
+    component: RegistroComponent
   },
-  
-  { path: '', component: InicioComponent },
-  { path: '**', redirectTo: '' }
-
+  {
+    path: 'admin', // Agrega la ruta para el componente de administración
+    component: AdminComponent
+  },
+  { path: '**', redirectTo: '/inicio' } // Corregido para redirigir a /inicio
 ];
 
 @NgModule({

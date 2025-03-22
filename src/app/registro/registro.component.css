@@ -1,101 +1,182 @@
+/* Estilos generales */
 .register-container {
-    max-width: 500px;
-    margin: 20px auto;
+    max-width: 800px;
+    margin: 0 auto;
     padding: 20px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
 }
 
 h2 {
     text-align: center;
-    color: #002147; /* Azul Marino */
+    margin-bottom: 30px;
+    color: #333;
 }
 
 fieldset {
-    border: 1px solid #002147;
-    padding: 15px;
-    margin-bottom: 15px;
-    border-radius: 8px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
 }
 
 legend {
     font-weight: bold;
-    color: #002147;
+    padding: 0 10px;
+    color: #333;
 }
 
 .form-row {
     display: flex;
-    gap: 10px;
-    margin-bottom: 10px;
+    gap: 15px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
 }
 
-input, select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.password-container {
-    display: flex;
-    align-items: center;
-    width: 100%;
-}
-
-.password-container input {
+.form-row > * {
     flex: 1;
+    min-width: 200px;
 }
 
-.password-container button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 18px;
+/* Estilos para etiquetas flotantes */
+.form-floating {
+    position: relative;
 }
 
-button[type="submit"] {
+.form-control {
     width: 100%;
-    background-color: #002147;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
+    padding: 18px 10px 6px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    height: 50px;
+    font-size: 16px;
+    transition: border-color 0.2s ease;
 }
 
-button:disabled {
-    background-color: #aaa;
+.form-floating label {
+    position: absolute;
+    left: 10px;
+    top: 18px;
+    color: #666;
+    pointer-events: none;
+    transition: all 0.2s ease;
+    font-size: 16px;
+    background-color: transparent;
+}
+
+/* Cuando el campo tiene foco o contenido */
+.form-control:focus,
+.form-control:not(:placeholder-shown),
+.form-control:not([value=""]) {
+    border-color: #4a90e2;
+    outline: none;
+}
+
+/* Nueva posición y estilo para la etiqueta cuando flota */
+.form-control:focus ~ label,
+.form-control:not(:placeholder-shown) ~ label,
+.form-control:not([value=""]) ~ label {
+    transform: translateY(-24px) scale(0.75);
+    color: #000;
+    top: 24px;
+    font-weight: 500;
+    background-color: transparent;
+    padding: 0 4px;
+}
+
+/* Ajustes específicos para selects */
+.form-floating select.form-control {
+    padding-top: 12px;
+    height: 55px;
+}
+
+select.form-control {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='gray' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+}
+
+/* Corrección del problema con el label en selects */
+.form-floating select.form-control ~ label {
+    top: 10px; /* Ajuste para que no se superponga con la opción seleccionada */
+    transform: translateY(-20px) scale(0.76);
+    background-color: white;
+    padding: 0 4px;
+    left: 150px;
+}
+
+/* Estilos para mensajes de error y éxito */
+.error-message {
+    color: #e74c3c;
+    font-size: 14px;
+    margin-top: 4px;
+    width: 100%;
+}
+
+.message {
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 15px;
 }
 
 .error {
-    color: rgb(0, 85, 255);
-    font-size: 0.8rem;
-    margin-top: -10px;
+    background-color: #fdecea;
+    color: #e74c3c;
+    border: 1px solid #e74c3c;
 }
 
-.message.success {
-    color: #3c763d;
-    background-color: #dff0d8;
-    border: 1px solid #d6e9c6;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 9999;
-    padding: 15px;
-    border-radius: 5px;
-    text-align: center;
-  }
-  
-  .message.error {
-    color: #4282a9;
-    background-color: #f2dede;
-    border: 1px solid #fefefe;
-    padding: 10px;
+.success {
+    background-color: #e7f9f0;
+    color: #27ae60;
+    border: 1px solid #27ae60;
+}
+
+/* Estilos para botones */
+button {
+    background-color: #4a90e2;
+    color: white;
+    padding: 12px 20px;
+    border: none;
     border-radius: 4px;
-    text-align: center;
-    margin-bottom: 15px;
-  }
-  
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.2s ease;
+}
+
+button:hover {
+    background-color: #357abd;
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.password-toggle {
+    background-color: transparent;
+    color: #4a90e2;
+    border: 1px solid #4a90e2;
+    padding: 8px 15px;
+    font-size: 14px;
+}
+
+.password-toggle:hover {
+    background-color: #f0f7ff;
+}
+
+/* Para inputs de tipo date en Firefox */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Para ajustar en pantallas pequeñas */
+@media (max-width: 768px) {
+    .form-row > * {
+        flex: 1 1 100%;
+    }
+}
