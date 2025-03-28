@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -11,15 +12,18 @@ export class LoginComponent {
   username: string = '';
   password: string = '';
 
-  constructor(private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   login() {
-    // Aquí puedes agregar la lógica para validar las credenciales
-    if (this.username === 'admin' && this.password === 'admin123') {
-      // Redirigir al panel de administración
-      this.router.navigate(['/admin']);
-    } else {
-      alert('Credenciales inválidas');
-    }
+    this.authService.login(this.username, this.password).subscribe({
+      next: (response: any) => {
+        alert('Inicio de sesión exitoso');
+        this.router.navigate(['/admin']);
+      },
+      error: (error) => {
+        console.error('Error de login:', error);
+        alert('Credenciales incorrectas. Verifica usuario y contraseña.');
+      }
+    });
   }
 }

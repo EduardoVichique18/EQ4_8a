@@ -1,10 +1,8 @@
 <div class="catalogo">
     <h2>Catálogo de servicios UPAV</h2>
   
-    <!-- Botón para abrir el modal -->
     <button class="btn btn-primary" (click)="openModal()">Agregar Servicio</button>
   
-    <!-- Lista de servicios -->
     <div class="servicios-container">
       <div *ngFor="let servicio of servicios" class="servicio-card">
         <img [src]="servicio.imagen" [alt]="servicio.nombre" class="servicio-imagen" />
@@ -19,7 +17,6 @@
     </div>
   </div>
   
-  <!-- Modal para agregar/editar servicios -->
   <ng-template #modal let-modal>
     <div class="modal-header">
       <h4 class="modal-title">{{ editando ? 'Editar Servicio' : 'Agregar Servicio' }}</h4>

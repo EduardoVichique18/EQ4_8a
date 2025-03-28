@@ -1,13 +1,11 @@
 <div class="servicios-container">
   <h3>Catálogo de Servicios (Admin)</h3>
   
-  <!-- Mensajes de error -->
   <div *ngIf="error" class="error-message">
     {{ error }}
     <button (click)="error = ''" class="btn-close">×</button>
   </div>
   
-  <!-- Formulario para agregar/editar servicios -->
   <div class="form-container">
     <h4>{{ modoEdicion ? 'Editar Servicio' : 'Agregar Nuevo Servicio' }}</h4>
     <div class="form-group">
@@ -45,7 +43,6 @@
     </div>
   </div>
   
-  <!-- Tabla de servicios -->
   <div class="table-container">
     <div *ngIf="cargando && servicios.length === 0" class="loading-message">
       Cargando servicios...

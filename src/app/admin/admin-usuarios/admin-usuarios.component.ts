@@ -1,4 +1,3 @@
-// admin-usuarios.component.ts
 import { Component, OnInit } from '@angular/core';
 
 interface Usuario {
@@ -32,7 +31,6 @@ export class AdminUsuariosComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    // Datos estáticos para el inicio
     this.usuarios = [
       { id: 1, nombre: 'Juan', apellidoPaterno: 'Pérez', apellidoMaterno: 'Gómez', correo: 'juan@example.com', edad: 25 },
       { id: 2, nombre: 'María', apellidoPaterno: 'López', apellidoMaterno: 'Sánchez', correo: 'maria@example.com', edad: 30 },
@@ -42,7 +40,6 @@ export class AdminUsuariosComponent implements OnInit {
 
   agregarUsuario(): void {
     if (this.validarFormulario()) {
-      // Asignar un nuevo ID
       const nuevoId = this.usuarios.length > 0 ? Math.max(...this.usuarios.map(u => u.id)) + 1 : 1;
       
       const usuario: Usuario = {
@@ -97,7 +94,6 @@ export class AdminUsuariosComponent implements OnInit {
   }
 
   validarFormulario(): boolean {
-    // Implementa validaciones según tus necesidades
     return this.nuevoUsuario.nombre.trim() !== '' && 
            this.nuevoUsuario.apellidoPaterno.trim() !== '' && 
            this.nuevoUsuario.apellidoMaterno.trim() !== '' && 

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { RegistroService } from '../registro.service';
+import { RegistroService } from '../services/registro.service';
 
 @Component({
   selector: 'app-registro',

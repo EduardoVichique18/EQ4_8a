@@ -1,4 +1,3 @@
-// admin.component.ts
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -9,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent {
-  currentView: string = 'dashboard'; // Opciones: 'dashboard', 'usuarios', 'servicios'
+  currentView: string = 'dashboard'; 
   
   constructor(private router: Router) {}
   

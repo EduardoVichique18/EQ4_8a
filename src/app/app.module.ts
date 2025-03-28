@@ -18,6 +18,7 @@ import { OfertaEducativaComponent } from './oferta-educativa/oferta-educativa.co
 import { AdminComponent } from './admin/admin.component';
 import { AdminUsuariosComponent } from './admin/admin-usuarios/admin-usuarios.component';
 import { AdminServiciosComponent } from './admin/admin-servicios/admin-servicios.component';
+import { AdminRegisterComponent } from './admin-register/admin-register.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { AdminServiciosComponent } from './admin/admin-servicios/admin-servicios
     OfertaEducativaComponent,
     AdminComponent,
     AdminUsuariosComponent,
-    AdminServiciosComponent
+    AdminServiciosComponent,
+    AdminRegisterComponent
 
   ],
   imports: [

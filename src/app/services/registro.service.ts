@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class RegistroService {
-  private apiUrl = 'http://localhost:3000/api/aspirantes/registro'; // Asegúrate de que el puerto sea correcto
+  private apiUrl = 'http://localhost:3000/api/aspirantes/registro';
 
   constructor(private http: HttpClient) {}
 
