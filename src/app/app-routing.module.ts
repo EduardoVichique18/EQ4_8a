@@ -10,6 +10,8 @@ import { RegistroComponent } from './registro/registro.component';
 import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component'; // Importa el componente de administración
 import { AdminRegisterComponent } from './admin-register/admin-register.component';
+import { BibliotecaLibrosComponent } from './biblioteca/biblioteca-libros/biblioteca-libros.component';
+
 
 const routes: Routes = [
   {
@@ -50,13 +52,18 @@ const routes: Routes = [
     component: RegistroComponent
   },
   {
+    path: 'biblioteca',
+    component: BibliotecaLibrosComponent
+  },
+  {
     path: 'admin', // Agrega la ruta para el componente de administración
     component: AdminComponent
   },
 
   { path: 'admin-register', component: AdminRegisterComponent },
-  
+
   { path: '**', redirectTo: '/inicio' }, // Corregido para redirigir a /inicio
+
 
 ];
 

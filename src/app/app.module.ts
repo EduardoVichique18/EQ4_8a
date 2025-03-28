@@ -19,6 +19,9 @@ import { AdminComponent } from './admin/admin.component';
 import { AdminUsuariosComponent } from './admin/admin-usuarios/admin-usuarios.component';
 import { AdminServiciosComponent } from './admin/admin-servicios/admin-servicios.component';
 import { AdminRegisterComponent } from './admin-register/admin-register.component';
+import { BibliotecaModule } from './biblioteca/biblioteca.module';
+import { BibliotecaLibrosComponent } from './biblioteca/biblioteca-libros/biblioteca-libros.component';
+
 
 @NgModule({
   declarations: [
@@ -33,7 +36,8 @@ import { AdminRegisterComponent } from './admin-register/admin-register.componen
     AdminComponent,
     AdminUsuariosComponent,
     AdminServiciosComponent,
-    AdminRegisterComponent
+    AdminRegisterComponent,
+
 
   ],
   imports: [
