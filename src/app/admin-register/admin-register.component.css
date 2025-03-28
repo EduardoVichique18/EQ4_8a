@@ -1,54 +1,78 @@
 /* Estilos generales */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #1e3a5f;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-  }
-  
-  /* Contenedores */
-  .login-container, .register-container {
-    background-color: #2c4b7d;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-    text-align: center;
-    width: 300px;
-  }
-  
-  /* Títulos */
-  h2 {
-    margin-bottom: 20px;
-  }
-  
-  /* Inputs y selects */
-  input, select {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: none;
-    border-radius: 5px;
-    background-color: #fff;
-    color: black;
-    font-size: 16px;
-  }
-  
-  /* Botones */
-  button {
-    background-color: #0d6efd;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  button:hover {
-    background-color: #084298;
-  }
-  
+
+
+/* Contenedor del formulario */
+.register-container {
+  background-color: hsl(0, 0%, 98%);
+  border-color: #00478f;
+  border-style: double;
+  border-radius: 15px;
+  padding: 30px 25px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  width: 350px;
+  margin: 50px auto;
+  transition: all 0.3s ease;
+}
+
+/* Título */
+h2 {
+  margin-bottom: 25px;
+  font-weight: 600;
+  color: #000000;
+}
+
+/* Inputs y selects */
+input, select {
+  width: 100%;
+  padding: 12px;
+  margin: 12px 0;
+  border: none;
+  border-radius: 8px;
+  background-color: #b1b1b1;
+  color: #333;
+  font-size: 15px;
+  transition: all 0.2s;
+}
+
+input:focus, select:focus {
+  outline: none;
+  background-color: #e0e0e0;
+  box-shadow: 0 0 5px #0d6efd;
+}
+
+/* Mensajes de error */
+.error-message {
+  color: #bd0c0c;
+  font-size: 13px;
+  text-decoration: dashed;
+  margin-top: -8px;
+  margin-bottom: 8px;
+}
+
+/* Botón */
+button {
+  background: linear-gradient(135deg, #0d6efd, #0b5ed7);
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: linear-gradient(135deg, #0b5ed7, #084298);
+  transform: scale(1.02);
+}
+
+/* Animación suave al cargar */
+.register-container {
+  animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

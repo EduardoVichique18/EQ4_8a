@@ -2,8 +2,10 @@
   max-width: 300px;
   margin: 50px auto;
   padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  
+  border-color: #00478f;
+  border-style: double;
+  border-radius: 15px;
 }
 form div {
   margin-bottom: 39px;

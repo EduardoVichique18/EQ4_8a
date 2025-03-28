@@ -1,13 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-interface Usuario {
-  id: number;
-  nombre: string;
-  apellidoPaterno: string;
-  apellidoMaterno: string;
-  correo: string;
-  edad: number;
-}
+import { UsuarioService, Usuario} from '../../services/usuario.service';
 
 @Component({
   selector: 'app-admin-usuarios',
@@ -19,7 +11,6 @@ export class AdminUsuariosComponent implements OnInit {
   usuarios: Usuario[] = [];
   usuarioSeleccionado: Usuario | null = null;
   nuevoUsuario: Usuario = {
-    id: 0,
     nombre: '',
     apellidoPaterno: '',
     apellidoMaterno: '',
@@ -27,28 +18,25 @@ export class AdminUsuariosComponent implements OnInit {
     edad: 0
   };
   modoEdicion: boolean = false;
-  
-  constructor() { }
+
+  constructor(private usuarioService: UsuarioService) {}
 
   ngOnInit(): void {
-    this.usuarios = [
-      { id: 1, nombre: 'Juan', apellidoPaterno: 'Pérez', apellidoMaterno: 'Gómez', correo: 'juan@example.com', edad: 25 },
-      { id: 2, nombre: 'María', apellidoPaterno: 'López', apellidoMaterno: 'Sánchez', correo: 'maria@example.com', edad: 30 },
-      { id: 3, nombre: 'Carlos', apellidoPaterno: 'Rodríguez', apellidoMaterno: 'Martínez', correo: 'carlos@example.com', edad: 35 }
-    ];
+    this.obtenerUsuarios();
+  }
+
+  obtenerUsuarios(): void {
+    this.usuarioService.obtenerUsuarios().subscribe(usuarios => {
+      this.usuarios = usuarios;
+    });
   }
 
   agregarUsuario(): void {
     if (this.validarFormulario()) {
-      const nuevoId = this.usuarios.length > 0 ? Math.max(...this.usuarios.map(u => u.id)) + 1 : 1;
-      
-      const usuario: Usuario = {
-        ...this.nuevoUsuario,
-        id: nuevoId
-      };
-      
-      this.usuarios.push(usuario);
-      this.limpiarFormulario();
+      this.usuarioService.crearUsuario(this.nuevoUsuario).subscribe(usuario => {
+        this.usuarios.push(usuario);
+        this.limpiarFormulario();
+      });
     }
   }
 
@@ -60,19 +48,22 @@ export class AdminUsuariosComponent implements OnInit {
 
   actualizarUsuario(): void {
     if (this.validarFormulario() && this.usuarioSeleccionado) {
-      const index = this.usuarios.findIndex(u => u.id === this.usuarioSeleccionado!.id);
-      if (index !== -1) {
-        this.usuarios[index] = { ...this.nuevoUsuario };
+      this.usuarioService.actualizarUsuario(this.usuarioSeleccionado._id!, this.nuevoUsuario).subscribe(usuarioActualizado => {
+        const index = this.usuarios.findIndex(u => u._id === this.usuarioSeleccionado!._id);
+        if (index !== -1) {
+          this.usuarios[index] = usuarioActualizado;
+        }
         this.limpiarFormulario();
         this.modoEdicion = false;
-        this.usuarioSeleccionado = null;
-      }
+      });
     }
   }
 
-  eliminarUsuario(id: number): void {
+  eliminarUsuario(id: string): void {
     if (confirm('¿Estás seguro de que deseas eliminar este usuario?')) {
-      this.usuarios = this.usuarios.filter(u => u.id !== id);
+      this.usuarioService.eliminarUsuario(id).subscribe(() => {
+        this.usuarios = this.usuarios.filter(u => u._id !== id);
+      });
     }
   }
 
@@ -84,7 +75,6 @@ export class AdminUsuariosComponent implements OnInit {
 
   limpiarFormulario(): void {
     this.nuevoUsuario = {
-      id: 0,
       nombre: '',
       apellidoPaterno: '',
       apellidoMaterno: '',
@@ -94,10 +84,10 @@ export class AdminUsuariosComponent implements OnInit {
   }
 
   validarFormulario(): boolean {
-    return this.nuevoUsuario.nombre.trim() !== '' && 
-           this.nuevoUsuario.apellidoPaterno.trim() !== '' && 
-           this.nuevoUsuario.apellidoMaterno.trim() !== '' && 
-           this.nuevoUsuario.correo.trim() !== '' && 
+    return this.nuevoUsuario.nombre.trim() !== '' &&
+           this.nuevoUsuario.apellidoPaterno.trim() !== '' &&
+           this.nuevoUsuario.apellidoMaterno.trim() !== '' &&
+           this.nuevoUsuario.correo.trim() !== '' &&
            this.nuevoUsuario.edad > 0;
   }
 }

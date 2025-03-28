@@ -49,6 +49,6 @@ import { AdminRegisterComponent } from './admin-register/admin-register.componen
   providers: [
     provideClientHydration(withEventReplay())
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent, AdminUsuariosComponent]
 })
 export class AppModule { }

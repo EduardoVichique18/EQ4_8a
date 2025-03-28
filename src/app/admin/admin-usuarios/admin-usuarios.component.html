@@ -1,8 +1,39 @@
 <div class="usuarios-container">
-    <h3>Catálogo de Usuarios (Admin)</h3>
+    <h3>Catálogo de Usuarios (Administrador)</h3>
     
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Apellido Paterno</th>
+            <th>Apellido Materno</th>
+            <th>Correo</th>
+            <th>Edad</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let usuario of usuarios">
+            <td>{{ usuario._id }}</td>
+            <td>{{ usuario.nombre }}</td>
+            <td>{{ usuario.apellidoPaterno }}</td>
+            <td>{{ usuario.apellidoMaterno }}</td>
+            <td>{{ usuario.correo }}</td>
+            <td>{{ usuario.edad }}</td>
+            <td>
+              <button (click)="editarUsuario(usuario)" class="btn-edit">Editar</button>
+              <button (click)="eliminarUsuario(usuario._id!)" class="btn-delete">Eliminar</button>
+            </td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+
     <div class="form-container">
-      <h4>{{ modoEdicion ? 'Editar Usuario' : 'Agregar Nuevo Usuario' }}</h4>
+      <h4>{{ modoEdicion ? 'Editar Usuario' : 'Editar Usuario' }}</h4>
       <div class="form-group">
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" [(ngModel)]="nuevoUsuario.nombre" required>
@@ -30,33 +61,5 @@
       </div>
     </div>
     
-    <div class="table-container">
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Apellido Paterno</th>
-            <th>Apellido Materno</th>
-            <th>Correo</th>
-            <th>Edad</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let usuario of usuarios">
-            <td>{{ usuario.id }}</td>
-            <td>{{ usuario.nombre }}</td>
-            <td>{{ usuario.apellidoPaterno }}</td>
-            <td>{{ usuario.apellidoMaterno }}</td>
-            <td>{{ usuario.correo }}</td>
-            <td>{{ usuario.edad }}</td>
-            <td>
-              <button (click)="editarUsuario(usuario)" class="btn-edit">Editar</button>
-              <button (click)="eliminarUsuario(usuario.id)" class="btn-delete">Eliminar</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    
   </div>

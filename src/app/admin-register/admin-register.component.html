@@ -38,6 +38,13 @@
         <option value="subdirector">Subdirector</option>
       </select>
     </div>
+    <div>
+      <label for="adminCode">Código de administrador:</label>
+      <input type="text" id="adminCode" [(ngModel)]="adminCode" name="adminCode" required #adminCodeRef="ngModel">
+      <div *ngIf="adminCodeRef.invalid && adminCodeRef.touched" class="error-message">
+        <span *ngIf="adminCodeRef.errors?.['required']">El código es obligatorio.</span>
+      </div>
+    </div>
 
     <button type="submit" [disabled]="registerForm.invalid">Registrar</button>
   </form>

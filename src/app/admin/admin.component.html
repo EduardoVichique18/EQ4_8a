@@ -1,23 +1,33 @@
 <div class="admin-container">
-    <div class="admin-header">
-      <h2>Panel de Administración</h2>
-      <button class="logout-button" (click)="cerrarSesion()">Cerrar Sesión</button>
+  <div class="admin-header">
+    <h2>Panel de Administración</h2>
+    <button class="logout-button" (click)="openConfirmModal()">Cerrar Sesión</button>
+  </div>
+  
+  <div class="admin-navigation">
+    <button [class.active]="currentView === 'dashboard'" (click)="changeView('dashboard')">Dashboard</button>
+    <button [class.active]="currentView === 'usuarios'" (click)="changeView('usuarios')">Catálogo de Usuarios</button>
+    <button [class.active]="currentView === 'servicios'" (click)="changeView('servicios')">Catálogo de Servicios</button>
+  </div>
+  
+  <div class="admin-content">
+    <div *ngIf="currentView === 'dashboard'">
+      <h3>Bienvenido al Panel de Administración</h3>
+      <p>Selecciona una opción del menú para gestionar los catálogos.</p>
     </div>
     
-    <div class="admin-navigation">
-      <button [class.active]="currentView === 'dashboard'" (click)="changeView('dashboard')">Dashboard</button>
-      <button [class.active]="currentView === 'usuarios'" (click)="changeView('usuarios')">Catálogo de Usuarios</button>
-      <button [class.active]="currentView === 'servicios'" (click)="changeView('servicios')">Catálogo de Servicios</button>
-    </div>
+    <app-admin-usuarios *ngIf="currentView === 'usuarios'"></app-admin-usuarios>
     
-    <div class="admin-content">
-      <div *ngIf="currentView === 'dashboard'">
-        <h3>Bienvenido al Panel de Administración</h3>
-        <p>Selecciona una opción del menú para gestionar los catálogos.</p>
-      </div>
-      
-      <app-admin-usuarios *ngIf="currentView === 'usuarios'"></app-admin-usuarios>
-      
-      <app-admin-servicios *ngIf="currentView === 'servicios'"></app-admin-servicios>
+    <app-admin-servicios *ngIf="currentView === 'servicios'"></app-admin-servicios>
+  </div>
+
+  <!-- Modal de Confirmación -->
+  <div class="modal" *ngIf="isModalOpen">
+    <div class="modal-content">
+      <h3>Confirmar Cierre de Sesión</h3>
+      <p>¿Estás seguro de que deseas cerrar sesión?</p>
+      <button class="pop" (click)="cerrarSesion()">Aceptar</button>
+      <button class="rak" (click)="closeConfirmModal()">Cancelar</button>
     </div>
   </div>
+</div>

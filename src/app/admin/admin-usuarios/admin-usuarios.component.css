@@ -1,13 +1,34 @@
-/* admin-usuarios.component.css */
+/* Contenedor general */
 .usuarios-container {
   width: 100%;
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 20px;
+  grid-template-columns: 1fr 2fr;
+  gap: 30px;
+  box-sizing: border-box;
 }
 
+/* ----------- FORMULARIO ----------- */
 .form-container {
-  background-color: #f5f5f5;
-  padding: 15px;
-  border-radius: 5px;
+  background: #ffffff;
+  padding: 25px;
+  margin: 15px;
+  border-radius: 15px;
+  border-color: #0d6efd;
+  border-style: double;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+}
+
+.form-container:hover {
+  transform: translateY(-2px);
+}
+
+h4 {
   margin-bottom: 20px;
+  font-size: 20px;
+  color: #1e3a5f;
 }
 
 .form-group {
@@ -17,43 +38,81 @@
 .form-group label {
   display: block;
   margin-bottom: 5px;
-  font-weight: bold;
+  font-weight: 600;
+  color: #333;
 }
 
 .form-group input {
   width: 100%;
-  padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: border 0.2s, box-shadow 0.2s;
 }
 
+.form-group input:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 5px #0d6efd88;
+  outline: none;
+}
+
+/* Botones */
 .form-actions {
-  margin-top: 15px;
+  margin-top: 20px;
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
 }
 
-.btn-primary {
-  background-color: #007bff;
-  color: white;
+.btn-primary, .btn-secondary {
+  flex: 1;
+  min-width: 100px;
+  padding: 10px 15px;
   border: none;
-  padding: 8px 16px;
-  border-radius: 4px;
+  border-radius: 8px;
+  font-weight: 600;
   cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #0d6efd, #0b5ed7);
+  color: white;
+  width: 10px;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #0b5ed7, #084298);
 }
 
 .btn-secondary {
-  background-color: #6c757d;
+  background: #6c757d;
   color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 4px;
-  cursor: pointer;
 }
 
-.table-container {
-  overflow-x: auto;
+.btn-secondary:hover {
+  background: #545b62;
 }
+
+/* ----------- TABLA ----------- */
+.table-container {
+  background: #ffffff;
+  padding: 20px;
+  margin: 15px;
+  border-radius: 15px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+  border-color: #0d6efd;
+  border-style: double;
+  transition: all 0.3s;
+
+}
+
+.table-container:hover {
+  transform: translateY(-2px);
+}
+
 
 table {
   width: 100%;
@@ -61,30 +120,57 @@ table {
 }
 
 table th, table td {
-  padding: 10px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
+  padding: 12px;
+  border-bottom: 1px solid #eaeaea;
 }
 
 table th {
-  background-color: #f2f2f2;
+  background: #4d8be931;
+  color: #1e3a5f;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+table tr:hover {
+  background-color: #44546634;
+}
+
+/* Botones de acciones */
+.btn-edit, .btn-delete {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.2s;
 }
 
 .btn-edit {
   background-color: #ffc107;
   color: black;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 3px;
-  margin-right: 5px;
-  cursor: pointer;
+  width: 100px;
+  margin: 5px;
+}
+
+.btn-edit:hover {
+  background-color: #e0a800;
+  transform: translateY(-2px);
+
 }
 
 .btn-delete {
   background-color: #dc3545;
   color: white;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 3px;
-  cursor: pointer;
+  width: 100px;
+  margin: 5px;
+}
+
+.btn-delete:hover {
+  background-color: #c82333;
+  transform: translateY(-2px);
+
+}
+h3{
+  text-align: center;
 }

@@ -13,13 +13,21 @@ export class AdminRegisterComponent {
   username: string = '';
   password: string = '';
   role: string = 'director';
+  adminCode: string = '';
 
   constructor(private authService: AuthService, private router: Router) {}
 
   register() {
     // Validación de campos vacíos
-    if (!this.email || !this.username || !this.password || this.password.length < 6) {
+    // Validación de campos vacíos
+    if (!this.email || !this.username || !this.password || !this.adminCode || this.password.length < 6) {
       alert('Por favor, completa todos los campos correctamente.');
+      return;
+    }
+
+    // Validación del código de admin
+    if (this.adminCode !== 'UPAV003') {
+      alert('Código de administrador no válido.');
       return;
     }
 
