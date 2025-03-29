@@ -21,6 +21,7 @@ import { AdminServiciosComponent } from './admin/admin-servicios/admin-servicios
 import { AdminRegisterComponent } from './admin-register/admin-register.component';
 import { BibliotecaModule } from './biblioteca/biblioteca.module';
 import { BibliotecaLibrosComponent } from './biblioteca/biblioteca-libros/biblioteca-libros.component';
+import { EncuestaComponent } from './encuesta/encuesta.component';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { BibliotecaLibrosComponent } from './biblioteca/biblioteca-libros/biblio
     AdminUsuariosComponent,
     AdminServiciosComponent,
     AdminRegisterComponent,
+    EncuestaComponent,
 
 
   ],
