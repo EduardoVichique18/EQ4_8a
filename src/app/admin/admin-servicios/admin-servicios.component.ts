@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiciosService, Servicio } from './servicios.service';
+import { DomSanitizer } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-admin-servicios',
@@ -14,13 +16,16 @@ export class AdminServiciosComponent implements OnInit {
     nombre: '',
     descripcion: '',
     disponible: true,
-    categoria: ''
+    categoria: '',
+    imagen: ''
   };
   modoEdicion: boolean = false;
   cargando: boolean = false;
   error: string = '';
   
-  constructor(private serviciosService: ServiciosService) { }
+  constructor(private serviciosService: ServiciosService, private sanitizer: DomSanitizer) { }
+  previewImagen: string | null = null;
+
   
   ngOnInit(): void {
     this.cargarServicios();
@@ -39,6 +44,17 @@ export class AdminServiciosComponent implements OnInit {
         this.cargando = false;
       }
     });
+  }
+  onImageSelected(event: any): void {
+    const file: File = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.nuevoServicio.imagen = reader.result as string; // Guardamos base64
+        this.previewImagen = reader.result as string;        // Para mostrar preview
+      };
+      reader.readAsDataURL(file);
+    }
   }
   
   agregarServicio(): void {
@@ -116,7 +132,8 @@ export class AdminServiciosComponent implements OnInit {
       nombre: '',
       descripcion: '',
       disponible: true,
-      categoria: ''
+      categoria: '',
+      imagen: ''
     };
     this.error = '';
   }

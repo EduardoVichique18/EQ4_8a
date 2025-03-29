@@ -5,6 +5,7 @@
     {{ error }}
     <button (click)="error = ''" class="btn-close">×</button>
   </div>
+
   
   <div class="form-container">
     <h4>{{ modoEdicion ? 'Editar Servicio' : 'Agregar Nuevo Servicio' }}</h4>
@@ -26,6 +27,17 @@
         <option value="Administrativo">Administrativo</option>
       </select>
     </div>
+    
+    <div class="form-group">
+      <label for="imagen">Imagen:</label>
+      <input type="file" id="imagen" (change)="onImageSelected($event)">
+    </div>
+    
+    <div class="form-group" *ngIf="previewImagen">
+      <label>Vista previa:</label><br>
+      <img [src]="previewImagen" alt="Preview" width="150" style="border-radius: 8px; border: 1px solid #ccc;">
+    </div>
+    
     <div class="form-group checkbox">
       <label>
         <input type="checkbox" [(ngModel)]="nuevoServicio.disponible">

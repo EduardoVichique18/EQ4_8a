@@ -1,47 +1,16 @@
+<!-- catalogo-servicios.component.html -->
 <div class="catalogo">
-    <h2>Catálogo de servicios UPAV</h2>
-  
-    <button class="btn btn-primary" (click)="openModal()">Agregar Servicio</button>
-  
-    <div class="servicios-container">
-      <div *ngFor="let servicio of servicios" class="servicio-card">
-        <img [src]="servicio.imagen" [alt]="servicio.nombre" class="servicio-imagen" />
-        <h3>{{ servicio.nombre }}</h3>
-        <p>{{ servicio.descripcion }}</p>
-        <p><strong>Precio:</strong> {{ servicio.precio }}</p>
-        <div class="acciones">
-          <button class="btn btn-warning" (click)="editarServicio(servicio)">Editar</button>
-          <button class="btn btn-danger" (click)="eliminarServicio(servicio.id)">Eliminar</button>
-        </div>
-      </div>
+  <h2>Catálogo de servicios UPAV</h2>
+
+  <div class="servicios-container" a routerLink="/biblioteca">
+    <div *ngFor="let servicio of servicios" class="servicio-card">
+      <!-- Puedes adaptar esto según lo que tengas en tu tabla servicios -->
+      <img [src]="servicio.imagen || 'https://via.placeholder.com/300x200'" [alt]="servicio.nombre" class="servicio-imagen" />
+      <h3>{{ servicio.nombre }}</h3>
+      <p>{{ servicio.descripcion }}</p>
+      <p><strong>Categoría:</strong> {{ servicio.categoria }}</p>
+      <p><strong>Disponible:</strong> {{ servicio.disponible ? 'Sí' : 'No' }}</p>
+      <p><strong>Fecha actualización:</strong> {{ servicio.fecha_actualizacion | date:'short' }}</p>
     </div>
   </div>
-  
-  <ng-template #modal let-modal>
-    <div class="modal-header">
-      <h4 class="modal-title">{{ editando ? 'Editar Servicio' : 'Agregar Servicio' }}</h4>
-      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss()"></button>
-    </div>
-    <div class="modal-body">
-      <form [formGroup]="servicioForm" (ngSubmit)="editando ? guardarEdicion() : agregarServicio()">
-        <div class="mb-3">
-          <label for="nombre" class="form-label">Nombre</label>
-          <input type="text" class="form-control" id="nombre" formControlName="nombre" required />
-        </div>
-        <div class="mb-3">
-          <label for="descripcion" class="form-label">Descripción</label>
-          <textarea class="form-control" id="descripcion" formControlName="descripcion" required></textarea>
-        </div>
-        <div class="mb-3">
-          <label for="precio" class="form-label">Precio</label>
-          <input type="text" class="form-control" id="precio" formControlName="precio" required />
-        </div>
-        <div class="mb-3">
-          <label for="imagen" class="form-label">URL de la Imagen</label>
-          <input type="text" class="form-control" id="imagen" formControlName="imagen" required />
-        </div>
-        <button type="submit" class="btn btn-primary">{{ editando ? 'Guardar Cambios' : 'Agregar Servicio' }}</button>
-        <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Cancelar</button>
-      </form>
-    </div>
-  </ng-template>
+</div>

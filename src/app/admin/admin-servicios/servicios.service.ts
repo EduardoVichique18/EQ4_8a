@@ -11,6 +11,7 @@ export interface Servicio {
   disponible: boolean;
   fecha_creacion?: string;
   fecha_actualizacion?: string;
+  imagen: string; // <-- NUEVO
 }
 
 @Injectable({

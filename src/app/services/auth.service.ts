@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:4000/api'; // Asegúrate que coincida con tu API
+  private apiUrl = 'http://localhost:4000/api';
   private tokenKey = 'authToken';
   private adminKey = 'currentAdmin';
 

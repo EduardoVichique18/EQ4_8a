@@ -6,11 +6,11 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegistroComponent } from './registro/registro.component';
 import { CatalogoUsuariosComponent } from './catalogo-usuarios/catalogo-usuarios.component';
+import { CatalogoServiciosComponent } from './catalogo-servicios/catalogo-servicios.component';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { CatalogoServiciosModule } from './catalogo-servicios/catalogo-servicios.module';
 import { ConocenosComponent } from './conocenos/conocenos.component';
 import { ContactoComponent } from './contacto/contacto.component';
 import { InicioComponent } from './inicio/inicio.component';
@@ -29,6 +29,7 @@ import { BibliotecaLibrosComponent } from './biblioteca/biblioteca-libros/biblio
     LoginComponent,
     RegistroComponent,
     CatalogoUsuariosComponent,
+    CatalogoServiciosComponent,
     ConocenosComponent,
     ContactoComponent,
     InicioComponent,
@@ -46,7 +47,6 @@ import { BibliotecaLibrosComponent } from './biblioteca/biblioteca-libros/biblio
     CommonModule,
     NgbModule,
     NgbModule,
-    CatalogoServiciosModule,
     FormsModule,
     HttpClientModule
   ],
