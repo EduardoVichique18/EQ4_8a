@@ -1,0 +1,16 @@
+<div class="container">
+    <h2>Test de Compatibilidad con Ingeniería Industrial</h2>
+    <form *ngIf="!resultado" (ngSubmit)="calcularCompatibilidad()">
+      <div *ngFor="let pregunta of preguntas; let i = index">
+        <label>{{ pregunta.texto }}</label>
+        <select [(ngModel)]="respuestas[i]" name="respuesta{{i}}" required>
+          <option *ngFor="let opcion of pregunta.opciones" [value]="opcion.valor">{{ opcion.texto }}</option>
+        </select>
+      </div>
+      <button type="submit">Calcular Compatibilidad</button>
+    </form>
+    <div *ngIf="resultado !== null">
+      <h3>Tu compatibilidad con Ingeniería Industrial es: {{ resultado }}%</h3>
+      <button (click)="reiniciar()">Reintentar</button>
+    </div>
+  </div>
